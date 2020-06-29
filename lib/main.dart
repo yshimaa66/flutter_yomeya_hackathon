@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutteryomeyahackathon/pages/home.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutteryomeyahackathon/pages/timeline.dart';
+
+import 'pages/home.dart';
 
 
 void main() {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
 
       ),
 
-      home: Home(),
+      home: Timeline(),
     );
   }
 }

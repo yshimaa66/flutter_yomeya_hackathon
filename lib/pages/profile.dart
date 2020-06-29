@@ -1,17 +1,15 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutteryomeyahackathon/models/user.dart';
-import 'package:flutteryomeyahackathon/pages/edit_profile.dart';
-import 'package:flutteryomeyahackathon/pages/home.dart';
-import 'package:flutteryomeyahackathon/pages/post_screen.dart';
-import 'package:flutteryomeyahackathon/widgets/header.dart';
-import 'package:flutteryomeyahackathon/widgets/post.dart';
-import 'package:flutteryomeyahackathon/widgets/post_tile.dart';
-import 'package:flutteryomeyahackathon/widgets/progress.dart';
+
+import '../models/user.dart';
+import '../widgets/header.dart';
+import '../widgets/post.dart';
+import '../widgets/post_tile.dart';
+import '../widgets/progress.dart';
+import 'edit_profile.dart';
+import 'home.dart';
 
 class Profile extends StatefulWidget {
 

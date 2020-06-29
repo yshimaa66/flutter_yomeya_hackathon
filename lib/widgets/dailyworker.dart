@@ -1,32 +1,22 @@
-import 'dart:async';
 import 'dart:math';
 
-import 'package:animator/animator.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutteryomeyahackathon/models/user.dart';
-import 'package:flutteryomeyahackathon/pages/activity_feed.dart';
-import 'package:flutteryomeyahackathon/pages/comments.dart';
-import 'package:flutteryomeyahackathon/pages/home.dart';
-import 'package:flutteryomeyahackathon/widgets/custom_image.dart';
-import 'package:flutteryomeyahackathon/widgets/progress.dart';
-import 'package:sk_onboarding_screen/sk_onboarding_model.dart';
-import 'package:sk_onboarding_screen/sk_onboarding_screen.dart';
 import 'package:slimy_card/slimy_card.dart';
-import 'package:timeago/timeago.dart' as timeago;
+
+import 'progress.dart';
 
 class DailyWorker extends StatefulWidget {
 
 
 
-  final String dailyworker_id;
-  final String supervisor_id;
+  final String dailyworkerId;
+  final String supervisorId;
   final String name;
-  final String phone_number;
-  final String anotherphone_number;
+  final String phoneNumber;
+  final String anotherphoneNumber;
   final dynamic mediaUrl;
   final String location;
   final String experience;
@@ -35,15 +25,15 @@ class DailyWorker extends StatefulWidget {
   final Timestamp timestamp;
 
 
-  DailyWorker({this.dailyworker_id, this.supervisor_id, this.name, this.phone_number,
-    this.location, this.anotherphone_number,
+  DailyWorker({this.dailyworkerId, this.supervisorId, this.name, this.phoneNumber,
+    this.location, this.anotherphoneNumber,
     this.mediaUrl, this.wageforhour, this.wageforday, this.experience, this.timestamp});
 
 
   /*var colorlist = [Colors.deepPurple.withOpacity(.5),Colors.deepOrange.withOpacity(.5)
     ,Colors.blue.withOpacity(.5),Colors.green.withOpacity(.5),Colors.yellow.withOpacity(.5)];*/
 
-  var colorlist = [Colors.deepOrange.withOpacity(.5)];
+  final colorlist = [Colors.deepOrange.withOpacity(.5)];
 
   final _random = new Random();
 
@@ -54,11 +44,11 @@ class DailyWorker extends StatefulWidget {
 
 
 
-      dailyworker_id: doc['dailyworker_id'],
-      supervisor_id: doc['supervisor_id'],
+      dailyworkerId: doc['dailyworker_id'],
+      supervisorId: doc['supervisor_id'],
       name: doc['name'],
-      phone_number: doc['phone_number'],
-      anotherphone_number: doc['anotherphone_number'],
+      phoneNumber: doc['phone_number'],
+      anotherphoneNumber: doc['anotherphone_number'],
       mediaUrl: doc['mediaUrl'],
       wageforhour: doc['wageforhour'],
       wageforday: doc['wageforday'],
@@ -76,11 +66,11 @@ class DailyWorker extends StatefulWidget {
   @override
   _DailyWorkerState createState() => _DailyWorkerState(
 
-    dailyworker_id: this.dailyworker_id,
-    supervisor_id: this.supervisor_id,
+    dailyworkerId: this.dailyworkerId,
+    supervisorId: this.supervisorId,
     name:this.name,
-    phone_number:this.phone_number,
-    anotherphone_number:this.anotherphone_number,
+    phoneNumber:this.phoneNumber,
+    anotherphoneNumber:this.anotherphoneNumber,
     mediaUrl:this.mediaUrl,
     location:this.location,
     experience:this.experience,
@@ -99,11 +89,11 @@ class _DailyWorkerState extends State<DailyWorker> {
 
   
 
-  final String dailyworker_id;
-  final String supervisor_id;
+  final String dailyworkerId;
+  final String supervisorId;
   final String name;
-  final String phone_number;
-  final String anotherphone_number;
+  final String phoneNumber;
+  final String anotherphoneNumber;
   final dynamic mediaUrl;
   final String location;
   final String experience;
@@ -114,8 +104,8 @@ class _DailyWorkerState extends State<DailyWorker> {
 
 
 
-  _DailyWorkerState({this.dailyworker_id, this.supervisor_id,
-      this.name, this.phone_number, this.anotherphone_number, this.mediaUrl, this.location,
+  _DailyWorkerState({this.dailyworkerId, this.supervisorId,
+      this.name, this.phoneNumber, this.anotherphoneNumber, this.mediaUrl, this.location,
       this.experience, this.wageforhour, this.wageforday,this.timestamp});
 
 
@@ -158,7 +148,7 @@ class _DailyWorkerState extends State<DailyWorker> {
 
   Widget buildImagesIcons(int i){
 
-    IconButton(
+    return IconButton(
       icon: Icon(Icons.crop_square,color: Colors.white ,size: 40.0,),
       onPressed: ()=>  builderCoworkingSpaceImage(i));
 
@@ -217,7 +207,7 @@ class _DailyWorkerState extends State<DailyWorker> {
     var element = widget.colorlist[widget._random.nextInt(widget.colorlist.length)];
 
 
-    print(dailyworker_id);
+    print(dailyworkerId);
 
 
 
@@ -228,7 +218,7 @@ class _DailyWorkerState extends State<DailyWorker> {
         children: <Widget>[
           GestureDetector(
 
-            onTap: () => print(dailyworker_id),
+            onTap: () => print(dailyworkerId),
 
             child:
             StreamBuilder(
@@ -284,9 +274,9 @@ class _DailyWorkerState extends State<DailyWorker> {
                             SizedBox(width:5),
                             Column(
                               children: <Widget>[
-                                Text(phone_number,style:TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold)),
-                                anotherphone_number!=""?
-                                Text(anotherphone_number,
+                                Text(phoneNumber,style:TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold)),
+                                anotherphoneNumber!=""?
+                                Text(anotherphoneNumber,
                                     style:TextStyle(fontSize: 15,color: Colors.white,
                                         fontWeight: FontWeight.bold)):Text(""),
                               ],

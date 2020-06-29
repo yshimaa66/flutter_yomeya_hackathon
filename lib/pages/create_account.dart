@@ -7,11 +7,10 @@ import 'package:country_pickers/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutteryomeyahackathon/widgets/header.dart';
 import 'package:sms/sms.dart';
-
 import 'package:sms_autofill/sms_autofill.dart';
-import 'package:flutter_sms/flutter_sms.dart';
+
+import '../widgets/header.dart';
 
 
 class CreateAccount extends StatefulWidget {
@@ -27,7 +26,7 @@ class _CreateAccountState extends State<CreateAccount> {
   final _scaffoldkey = GlobalKey<ScaffoldState>();
   final _formkeyusername = GlobalKey<FormState>();
   final _formkeyphonenumber = GlobalKey<FormState>();
-  String username, phone_number;
+  String username, phoneNumber;
 
 
 
@@ -102,7 +101,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
 
 
-  Future<void> verifyPhone(String countryCode, String phone_number) async {
+  Future<void> verifyPhone(String countryCode, String phoneNumber) async {
     final PhoneCodeSent smsOTPSent = (String verId, [int forceCodeResend]) {
       this.verificationId = verId;
       smsOTPDialog(context).then((value) {
@@ -111,7 +110,7 @@ class _CreateAccountState extends State<CreateAccount> {
     };
     try {
       await _auth.verifyPhoneNumber(
-          phoneNumber: countryCode+phone_number, // PHONE NUMBER TO SEND OTP
+          phoneNumber: countryCode+phoneNumber, // PHONE NUMBER TO SEND OTP
           codeAutoRetrievalTimeout: (String verId) {
             //Starts the phone number verification process for the given phone number.
             //Either sends an SMS with a 6 digit code to the phone number specified, or sign's the user in and [verificationCompleted] is called.
@@ -198,7 +197,7 @@ class _CreateAccountState extends State<CreateAccount> {
                          _scaffoldkey.currentState.showSnackBar(snackBar);
                        } else {
                          Navigator.pop(context);
-                         create_user_account();
+                         createUserAccount();
                        }
                      });
 
@@ -213,7 +212,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
 
 
-  create_user_account() {
+  createUserAccount() {
 
 
     final formusername = _formkeyusername.currentState;
@@ -232,7 +231,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
         Timer(Duration(seconds:2), (){
 
-          var userData = {'username' : username, 'phone_number':"$countryCode$phone_number"};
+          var userData = {'username' : username, 'phone_number':"$countryCode$phoneNumber"};
 
           Navigator.pop(context, userData);
 
@@ -295,7 +294,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
     }
 
-    print("$countryCode$phone_number");
+    print("$countryCode$phoneNumber");
 
 
     if(username.trim().length<3){
@@ -306,7 +305,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
 
     }
-    else if(phone_number.trim().length<10){
+    else if(phoneNumber.trim().length<10){
 
       SnackBar snackBar = SnackBar(content: Text(
           "Invalid Phone number"));
@@ -317,7 +316,7 @@ class _CreateAccountState extends State<CreateAccount> {
     else {
 
 
-      verifyPhone(countryCode, phone_number);
+      verifyPhone(countryCode, phoneNumber);
       //sendOtp(phone_number, countryCode);
       //sendSms(phone_number, countryCode);
 
@@ -448,7 +447,7 @@ class _CreateAccountState extends State<CreateAccount> {
                               }
 
                             },
-                            onSaved: (val)=> phone_number=val,
+                            onSaved: (val)=> phoneNumber=val,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(border: OutlineInputBorder()
                                 , labelText: "Phone Number"

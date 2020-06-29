@@ -1,20 +1,16 @@
 import 'dart:async';
 
-import 'package:animator/animator.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutteryomeyahackathon/models/user.dart';
-import 'package:flutteryomeyahackathon/pages/activity_feed.dart';
-import 'package:flutteryomeyahackathon/pages/comments.dart';
-import 'package:flutteryomeyahackathon/pages/home.dart';
-import 'package:flutteryomeyahackathon/widgets/custom_image.dart';
-import 'package:flutteryomeyahackathon/widgets/progress.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import '../models/user.dart';
+import '../pages/activity_feed.dart';
+import '../pages/comments.dart';
+import '../pages/home.dart';
+import 'progress.dart';
 
 class Post extends StatefulWidget {
 

@@ -5,14 +5,14 @@ class User {
 
   final String id;
   final String username;
-  final String phone_number;
+  final String phoneNumber;
   final String email;
   final String photoUrl;
   final String displayName;
   final String bio;
 
 
-  User({this.id, this.username, this.phone_number,this.email, this.photoUrl, this.displayName, this.bio});
+  User({this.id, this.username, this.phoneNumber,this.email, this.photoUrl, this.displayName, this.bio});
 
 
    factory User.fromDocument(DocumentSnapshot doc)
@@ -21,7 +21,7 @@ class User {
 
        id: doc['id'],
        username: doc['username'],
-       phone_number: doc['phone_number'],
+       phoneNumber: doc['phone_number'],
        email: doc['email'],
        photoUrl: doc['photoUrl'],
        displayName: doc['displayName'],

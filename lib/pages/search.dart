@@ -3,10 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutteryomeyahackathon/models/user.dart';
-import 'package:flutteryomeyahackathon/pages/home.dart';
-import 'package:flutteryomeyahackathon/widgets/progress.dart';
 
+import '../models/user.dart';
+import '../widgets/progress.dart';
 import 'activity_feed.dart';
 
 

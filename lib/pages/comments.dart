@@ -1,11 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutteryomeyahackathon/pages/home.dart';
-import 'package:flutteryomeyahackathon/widgets/header.dart';
-import 'package:flutteryomeyahackathon/widgets/progress.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import '../widgets/header.dart';
+import '../widgets/progress.dart';
+import 'home.dart';
 
 class Comments extends StatefulWidget {
 

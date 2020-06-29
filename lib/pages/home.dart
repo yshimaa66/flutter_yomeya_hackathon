@@ -1,19 +1,17 @@
 import 'dart:developer';
-import 'dart:io';
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutteryomeyahackathon/models/user.dart';
-import 'package:flutteryomeyahackathon/pages/create_account.dart';
-import 'package:flutteryomeyahackathon/pages/profile.dart';
-import 'package:flutteryomeyahackathon/pages/search.dart';
-import 'package:flutteryomeyahackathon/pages/timeline.dart';
-import 'package:flutteryomeyahackathon/pages/upload.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../models/user.dart';
 import 'activity_feed.dart';
+import 'create_account.dart';
+import 'profile.dart';
+import 'timeline.dart';
+import 'upload.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 final StorageReference storageRef = FirebaseStorage.instance.ref();
@@ -172,13 +170,13 @@ class _HomeState extends State<Home> {
       var userData = await Navigator.push(context, MaterialPageRoute(builder: (context) => CreateAccount()));
 
       final username = userData['username'];
-      final phone_number = userData['phone_number'];
+      final phoneNumber = userData['phone_number'];
 
       usersRef.document(user.id).setData({
 
         "id":user.id,
         "username":username,
-        "phone_number":phone_number,
+        "phone_number":phoneNumber,
         "photoUrl":user.photoUrl,
         "email":user.email,
         "displayName":user.displayName,
